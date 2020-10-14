@@ -1,6 +1,8 @@
 //1.0基础轮播及左右按钮点击切换
 //声明$选择功能
 var $ = document.querySelectorAll.bind(document)
+//动态设置下方按钮居中
+$('.box-dian')[0].style.left = ($('.box')[0].offsetWidth - 25 * $('.button').length) / 2 + 'px'
 var index = 0
 var timer
 //将整个定时器包装
