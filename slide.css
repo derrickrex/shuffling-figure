@@ -62,3 +62,35 @@
 	color: #fff;
 	cursor: pointer;
 }
+
+.box .box-dian {
+	position: absolute;
+	width: 200px;
+	bottom: 15px;
+	right: 50px;
+	z-index: 11;
+}
+
+.box .box-dian ul {
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+
+.box .box-dian ul li {
+	width: 20px;
+	height: 20px;
+	background-color: #ADD8E6;
+	border-radius: 50%;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.box .box-dian ul li:first-child {
+	background-color: red;
+}
+
+.box .box-dian ul li:hover {
+	background-color: red;
+	cursor: pointer;
+}
