@@ -1,3 +1,4 @@
+//1.0基础轮播及左右按钮点击切换
 //声明$选择功能
 var $ = document.querySelectorAll.bind(document)
 var index = 0
@@ -10,7 +11,15 @@ function runTimer() {
 			index = 0
 		}
 		control()
+		changeColor()
 	}, 3000)
+}
+// 将按钮颜色随图片改变包装
+function changeColor() {
+	for (let i = 0; i < $('.button').length; i++) {
+		$('.button')[i].style.background = '#ccc'
+	}
+	$('.button')[index].style.background = 'red' //以上四行：button的颜色随着图片改变
 }
 
 function control() {
@@ -31,6 +40,7 @@ $('.box-left')[0].onclick = function() {
 		index = $('.box-img').length - 1
 	}
 	control()
+	changeColor()
 	runTimer()
 }
 //右按钮事件
@@ -41,5 +51,24 @@ $('.box-right')[0].onclick = function() {
 		index = 0
 	}
 	control()
+	changeColor()
 	runTimer()
+}
+// 所有按钮移入移出循环
+for (var i = 0; i < $('.button').length; i++) {
+	$('.button')[i].setAttribute('setIndex', i) //设置每个按钮的索引值
+	//移入按钮停止定时器并且显示相应图片
+	$('.button')[i].onmouseover = function() {
+		clearInterval(timer)
+		index = this.getAttribute('setIndex') //按钮的索引i赋予图片的索引
+		control()
+		changeColor()
+	}
+	//移出按钮启动定时器
+	$('.button')[i].onmouseout = function() {
+		clearInterval(timer)
+		control()
+		changeColor()
+		runTimer()
+	}
 }
